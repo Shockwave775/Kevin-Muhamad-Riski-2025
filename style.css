@@ -1,0 +1,1315 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
+:root {
+    --primaryTextColor: #232e35;
+    /* Untuk title atau judul */
+    --secondaryTextColor: #656d72;
+    /* Untuk text biasa seperti paragraph contohnya */
+    --borderColor: #f1f1f1;
+    --lineColor: #d9d9d9;
+    /* untuk line di pre-title */
+    --primaryBackgroundColor: #fff;
+    --secondaryBackgroundColor: #fbfbfb;
+    --thirdBackgroundColor: #fefbf3;
+    --primaryIconColor: #fca400;
+    --primaryIconColorHover: #f7c231;
+    --sectionPadding: 6rem 0;
+    --itemBorderRadius: 0.7rem;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+    background: linear-gradient(45deg, #dbdbdb, #fbfbfb, #dfdfde, #ffffff);
+    background-size: 900% 200%;
+    animation: animate 10s linear infinite;
+    overflow-x: hidden;
+}
+
+@keyframes animate {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    0% {
+        background-position: 0% 50%;
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+strong {
+    color: var(--primaryTextColor);
+}
+
+p {
+    font-size: 1rem;
+    /* 16 px */
+    line-height: 1.9rem;
+    /*30.4 px */
+}
+
+p,
+span,
+label,
+input,
+textarea,
+li {
+    color: var(--secondaryTextColor);
+}
+
+a {
+    text-decoration: none;
+}
+
+
+/* padding semua Section*/
+
+
+/* GLOBAL */
+
+p {
+    margin: 0 0 1.5rem;
+    line-height: 1.75;
+}
+
+
+/* CARD */
+
+.card .item-inner p {
+    margin-bottom: 1.25rem;
+    line-height: 1.6;
+}
+
+
+/* POPUP */
+
+.popup-box .popup-body p {
+    margin-bottom: 1.75rem;
+    line-height: 1.8;
+}
+
+
+/* --------------- */
+
+
+/* End Preparation */
+
+.main-container {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 1200px) {
+    .main-container {
+        width: 90%;
+    }
+}
+
+
+/* Buttons */
+
+.btn {
+    padding: 1rem 1.5rem;
+    background: white;
+    border-radius: 35px;
+    border: 1.5px solid var(--borderColor);
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+
+.btn:hover {
+    background: var(--primaryIconColor);
+    box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
+}
+
+
+/* Titles */
+
+.section-title {
+    margin: 1rem 0 4rem;
+    font-size: 2rem;
+}
+
+.pre-title {
+    text-transform: uppercase;
+    letter-spacing: 0.5rem;
+    color: var(--secondaryTextColor);
+    position: relative;
+    padding-left: 40px;
+    /* For older Firefox versions */
+    width: -moz-fit-content;
+    /* Standard version */
+    width: fit-content;
+    -moz-fit: content;
+    font-weight: 400;
+    font-size: 0.9rem;
+}
+
+.pre-title::before {
+    content: "";
+    width: 30px;
+    height: 1px;
+    background: var(--lineColor);
+    position: absolute;
+    display: block;
+    left: 0;
+    top: 50%;
+}
+
+
+/* Layouts */
+
+.grid-3 {
+    display: grid;
+    /* grid-template-columns: 1fr 1fr 1fr; use this first, use code below when its time for explaining responsive design part */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3rem;
+}
+
+.container {
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+    height: 100vh;
+}
+
+.section id {
+    scroll-snap-align: start;
+}
+
+
+/* --- Logo and Navigation Menu --- */
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 99;
+    display: none;
+    /*background-color: rgba(252, 252, 252, 0.233);*/
+    /*-webkit-backdrop-filter: blur(12px);*/
+    /*-moz-backdrop-filter: blur(12px);*/
+    /*backdrop-filter: blur(12px);*/
+}
+
+header::before {
+    content: "";
+    position: absolute;
+    background: rgba(252, 252, 252, 0.233);
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(12px);
+    display: none;
+}
+
+.head {
+    padding-left: 15px;
+    padding-right: 15px;
+    z-index: 10;
+    position: relative;
+    display: none;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem 0;
+    /* position: fixed;
+    left: 0;
+    top: 0;
+    height: 70px;
+    width: 100%;
+    background: rgba(225, 225, 225, .1);
+    align-items: center;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--borderColor);
+    z-index: 9999; */
+    display: none;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 3rem;
+    display: none;
+}
+
+
+/* Logo */
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    font-size: 2rem;
+    display: none;
+}
+
+.logo a {
+    color: var(--primaryTextColor);
+    display: none;
+}
+
+
+/* Navigation Menu */
+
+nav ul li {
+    display: flex;
+    align-items: center;
+    display: none;
+}
+
+nav ul li a {
+    color: var(--primaryTextColor);
+    transition: 0.1s ease-in-out;
+    display: none;
+}
+
+.nav ul li a:hover {
+    color: var(--primaryIconColorHover);
+    display: none;
+}
+
+
+/* Burger - Save for later on video */
+
+.burger div {
+    width: 25px;
+    height: 2px;
+    background-color: #000;
+    margin: 7px;
+    transition: all 0.3s;
+    z-index: 99;
+    display: none;
+}
+
+.burger {
+    display: none;
+    z-index: 99;
+    /*position: fixed;*/
+    /*top: 18px;*/
+    /*right: 35px;*/
+    display: none;
+}
+
+.hero-name,
+.hero-name * {
+    font-weight: 900 !important;
+}
+
+.hero-name {
+    font-size: 3rem;
+    /* boleh tetap */
+    font-weight: 900;
+    /* WAJIB: bikin bold tegas */
+    line-height: 1.15;
+    /* rapih, tidak terlalu tinggi */
+    letter-spacing: -0.5px;
+    /* biar kelihatan solid */
+    margin: 0.5rem 0 1rem;
+    color: var(--primaryTextColor);
+}
+
+.hero-name span {
+    font-weight: 900;
+    color: var(--primaryIconColor);
+}
+
+.hero-left p {
+    font-weight: 400;
+    max-width: 520px;
+    line-height: 1.8;
+}
+
+
+/* ------------------button portfolio------------- */
+
+.hero-cta {
+    margin-top: 24px;
+    display: flex;
+    gap: 16px;
+}
+
+.btn-primary {
+    background: #fca400;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background: #f7b733;
+    /* kuning lebih soft */
+    color: #ffffff;
+    box-shadow: 0 10px 25px rgba(252, 164, 0, 0.35);
+    transform: translateY(-2px);
+}
+
+.btn-outline {
+    border: 2px solid #fca400;
+    color: #fca400;
+    background: transparent;
+}
+
+.btn-outline:hover {
+    background: #fca400;
+    color: #ffffff;
+    box-shadow: 0 10px 25px rgba(252, 164, 0, 0.35);
+}
+
+.btn-primary,
+.btn-outline {
+    transition: background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease;
+}
+
+.btn-primary:active,
+.btn-outline:active {
+    transform: translateY(0) scale(0.97);
+}
+
+
+/* Hero Section */
+
+#hero {
+    height: 720px;
+    min-height: 100vh;
+    display: flex;
+    position: relative;
+    padding-bottom: 4rem;
+    /* grid-template-columns: 1fr 1fr; */
+    /* We're not going to use automatic template columns, because we need to know when the columns is go below. So we can exchange the order of the element */
+    align-items: center;
+}
+
+.hero-grid {
+    display: grid;
+    align-items: center;
+    /* grid-template-columns: 40% 60%; */
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.hero-left {
+    position: center;
+    align-items: center;
+}
+
+
+/* .hero-name {
+    font-size: 3rem;
+    font-weight: 500;
+    margin: 0.5rem 0 1rem;
+} */
+
+.hero-name span {
+    color: var(--primaryIconColor) !important;
+}
+
+.hero-right img {
+    padding: 6rem 0 2rem;
+    width: 90%;
+}
+
+.hero-right {
+    display: flex;
+    justify-content: center;
+}
+
+
+/* Services Section */
+
+#services {
+    /* background-color: var(--secondaryBackgroundColor); */
+    padding: var(--sectionPadding);
+}
+
+.services .pre-title {
+    margin: 0 auto;
+}
+
+.services-title {
+    text-align: center;
+}
+
+.service {
+    padding: 3rem 2rem;
+    text-align: center;
+    background: var(--primaryBackgroundColor);
+    border-radius: 15px;
+}
+
+.service h4 {
+    margin: 1.5rem 0;
+    font-weight: 500;
+    font-size: 1.05rem;
+}
+
+.service-icon {
+    background: var(--thirdBackgroundColor);
+    /* For older Firefox versions */
+    width: -moz-fit-content;
+    /* Standard version */
+    width: fit-content;
+    margin: 0 auto;
+    padding: 1rem 1.3rem;
+    border-radius: 0.5rem;
+}
+
+.service-icon svg {
+    fill: var(--primaryIconColor);
+}
+
+.service-icon {
+    background: var(--thirdBackgroundColor);
+    /* For older Firefox versions */
+    width: -moz-fit-content;
+    /* Standard version */
+    width: fit-content;
+    margin: 0 auto;
+    padding: 1rem 1.3rem;
+    border-radius: 0.5rem;
+}
+
+.service-icon svg {
+    fill: var(--primaryIconColor);
+}
+
+
+/* Portfolios */
+
+#portfolios {
+    padding: var(--sectionPadding);
+}
+
+.portfolios .pre-title {
+    margin: 0 auto;
+}
+
+.portfolios .section-title {
+    text-align: center;
+}
+
+.wrapper {
+    max-width: 1100px;
+    width: 100%;
+    position: relative;
+    margin: 0 auto;
+}
+
+
+/*.wrapper i {*/
+
+#portfolios .slider__navigation>button {
+    top: 50%;
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
+    font-size: 1.25rem;
+    position: absolute;
+    text-align: center;
+    /*line-height: 50px;*/
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.23);
+    /*transform: translateY(-50%);*/
+    transition: transform 0.1s linear;
+    z-index: 9;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#portfolios .slider__navigation>button.nav-prev {
+    transform: translateY(-50%) translateX(-50%);
+    left: 0;
+}
+
+#portfolios .slider__navigation>button.nav-next {
+    transform: translateY(-50%) translateX(50%);
+    right: 0;
+}
+
+
+/*.wrapper i:active {*/
+
+#portfolios .slider__navigation>button.nav-prev:active {
+    transform: translateY(-50%) translateX(-50%) scale(0.85);
+}
+
+#portfolios .slider__navigation>button.nav-next:active {
+    transform: translateY(-50%) translateX(50%) scale(0.85);
+}
+
+.carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.carousel.no-transition {
+    scroll-behavior: auto;
+}
+
+.carousel.dragging {
+    scroll-snap-type: none;
+    scroll-behavior: auto;
+}
+
+.carousel.dragging .card {
+    cursor: grab;
+    /* Standard version */
+    /* Prevent text selection */
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.card {
+    cursor: pointer;
+    overflow: hidden;
+    /* supaya gambar yang diatas itu dia ngikut border radiusnya, karena yang dikasih border radius disini adalah div portfolio ini */
+    border: 1px solid #f1f1f1;
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* --popup-- */
+
+.portfolio-cover {
+    height: 350px;
+}
+
+.card img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.carousel .card {
+    scroll-snap-align: start;
+    /* height: auto; */
+    border-radius: 16px;
+    overflow: hidden;
+    background: #fff;
+    cursor: pointer;
+    height: auto;
+    display: flex;
+}
+
+.card .item-inner {
+    padding: 20px;
+    flex: 1 0 15em;
+    text-align: center;
+    flex-direction: column;
+    display: flex;
+    /* height: auto; */
+}
+
+.card .read-more-cont {
+    display: none;
+}
+
+.card .item-inner h3 {
+    font-size: 20px;
+    color: #000000;
+    margin: 30px 0;
+    position: relative;
+}
+
+.card .item-inner p {
+    color: #555555;
+    font-size: 16px;
+    margin: 0 0 30px;
+}
+
+.card .item-inner .btn {
+    font-size: 16px;
+    background-color: transparent;
+    border-radius: 35px;
+    border: 1.5px solid var(--borderColor);
+    color: #555555;
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+    align-self: center;
+    margin-top: auto;
+}
+
+.card .item-inner .btn:hover {
+    background: var(--primaryIconColor);
+    box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
+}
+
+
+/* Add these styles to adjust the height of the card buttons and read more carousel */
+
+
+/* ------ */
+
+.popup-box .popup-body .gallery-container {
+    max-width: 85%;
+    margin: 20px auto;
+}
+
+.popup-box .popup-body .gallery-container .image-container {
+    /* columns: 3 250px; */
+    gap: 15px;
+}
+
+.popup-box .popup-body .gallery-container .image-container img {
+    margin-bottom: 10px;
+    border-radius: 5px;
+    width: 100%;
+}
+
+
+/* ---- */
+
+
+/* popup grid img */
+
+.popup-image-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.popup-image-grid img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 14px;
+}
+
+
+/* Base Grid Popup */
+
+.popup-grid {
+    display: grid;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+
+/* portfolio 1:1 */
+
+.popup-grid.grid-1-1 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.popup-grid.grid-1-1 img {
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    width: 100%;
+    border-radius: 12px;
+}
+
+
+/* portfolio 3:4 */
+
+.popup-grid.grid-3-4 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.popup-grid.grid-3-4 img {
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    width: 100%;
+    border-radius: 12px;
+}
+
+
+/* portfolio landscape */
+
+.popup-grid.grid-landscape {
+    grid-template-columns: 1fr;
+}
+
+.popup-grid.grid-landscape img {
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    width: 100%;
+    border-radius: 14px;
+}
+
+
+/* ---------------- */
+
+.popup-box .popup-body .container {
+    max-width: 1100px;
+    width: 90%;
+    margin: auto;
+    padding: 10px 0;
+}
+
+.popup-box .popup-body .content-gallery {
+    display: flex;
+    gap: 20px;
+}
+
+.popup-box .popup-body .source img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.popup-box .popup-body .column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.popup-box .popup-body .video-container .youtube {
+    width: 100%;
+    border-radius: 8px;
+    aspect-ratio: 16 / 9;
+}
+
+.popup-box .popup-body .image-container .image img {
+    height: 100%;
+    width: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+
+/* ---popup--- */
+
+.popup-box {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 500;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+}
+
+.popup-box.open {
+    visibility: visible;
+    opacity: 1;
+}
+
+.popup-box .popup-content {
+    background-color: #ffffff;
+    width: 100%;
+    max-width: 1200px;
+    /* KONTROL UKURAN MAX */
+    max-height: 90vh;
+    margin: 0 20px;
+    /* JARAK SAMPING */
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.popup-box .popup-header {
+    padding: 15px 40px 15px 15px;
+    position: relative;
+}
+
+.popup-box .popup-header h3 {
+    margin: 0;
+    color: #000000;
+    font-size: 20px;
+    text-align: center;
+}
+
+.popup-box .popup-header .popup-close-icon {
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    text-align: center;
+    color: #555555;
+    font-size: 28px;
+    line-height: 30px;
+    right: 15px;
+    top: 50%;
+    cursor: pointer;
+    transform: translateY(-50%);
+}
+
+.popup-box .popup-body {
+    display: block;
+    padding: 15px;
+    overflow-y: auto;
+}
+
+.popup-box .popup-body img {
+    width: 100%;
+    display: block;
+}
+
+.popup-box .popup-body p {
+    font-size: 16px;
+    color: #555555;
+    margin: 0 0 15px;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 15px;
+}
+
+.popup-box .popup-footer {
+    padding: 15px;
+    text-align: right;
+    margin-top: auto;
+}
+
+.popup-box .popup-footer .btn {
+    padding: 8px 15px;
+    border: 1px solid #555555;
+    color: #555555;
+    font-size: 16px;
+    background-color: transparent;
+    cursor: pointer;
+    border-radius: 26px;
+}
+
+.popup-box .popup-footer .btn:focus {
+    outline: none;
+}
+
+
+/* ------------------- */
+
+.video-container {
+    width: 100%;
+    max-width: 100%;
+}
+
+.video-container .vimeo-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.popup-box .popup-body .vimeo-wrapper {
+    position: relative;
+    width: 100%;
+    max-height: 72vh;
+    /* BIKIN TIDAK SCROLL */
+    aspect-ratio: 16 / 9;
+    /* RASIO VIDEO */
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.popup-box .popup-body .vimeo-wrapper iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+
+/*responsive*/
+
+@media (max-width: 768px) {
+    .popup-image-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .popup-grid {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .popup-box .popup-body .video-vertical video,
+    .popup-box .popup-body .video-vertical iframe {
+        height: 70vh;
+        max-width: 100%;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .wrapper .carousel {
+        grid-auto-columns: calc((100% / 2) - 9px);
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .wrapper .carousel {
+        grid-auto-columns: 100%;
+    }
+}
+
+
+/* -=ovwefgjoierwjiogf */
+
+@media screen and (max-height: 800px) {
+    .popup-box .popup-body {
+        max-height: calc(100% - 145px);
+    }
+}
+
+@media screen and (max-height: 600px) {
+    .popup-box .popup-body {
+        height: calc(100% - 145px);
+    }
+    .popup-box .popup-content {
+        width: calc(90% - 30px);
+        max-height: calc(90% - 30px);
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    .main-container {
+        width: 90%;
+    }
+}
+
+
+/* Skills and Education */
+
+#skills {
+    padding: var(--sectionPadding);
+    /* background: var(--secondaryBackgroundColor); */
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 3rem;
+}
+
+.education {
+    display: flex;
+    gap: 1rem;
+}
+
+.education .line {
+    padding: 0 0.7rem;
+}
+
+.education .line div {
+    width: 2px;
+    height: 100%;
+    background: var(--borderColor);
+    position: relative;
+}
+
+.education-info p {
+    margin: 0.6rem 0 1.4rem;
+}
+
+.education-years {
+    margin-bottom: 3rem;
+}
+
+
+/* The dot on the line */
+
+.education .line div:before {
+    content: "";
+    width: 15px;
+    height: 15px;
+    background: var(--borderColor);
+    border-radius: 50%;
+    position: absolute;
+    left: -6px;
+}
+
+
+/* Right side of Skills */
+
+.skills-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 1.5rem;
+}
+
+.skills-right ul {
+    line-height: 2rem;
+    padding: 0 1rem;
+}
+
+
+/* Contact Section */
+
+#contact {
+    padding: var(--sectionPadding);
+}
+
+.contact {
+    display: grid;
+    /* grid-template-columns: 1fr 1fr; */
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 3rem;
+}
+
+.contact-form div {
+    margin-bottom: 1.4rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 0.75rem 1.3rem;
+    font-family: "Roboto", sans-serif;
+    background: var(--secondaryBackgroundColor);
+    border: 1px solid var(--borderColor);
+    border-radius: 15px;
+    resize: none;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: #9d9fa1;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border: 1px solid #7d7d7d;
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 0.75rem 1.3rem;
+    background-color: var(--primaryIconColor);
+    color: #fff;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+
+.btn-submit:hover {
+    background-color: var(--primaryIconColorHover);
+}
+
+
+/* Contact Section - Right Side */
+
+.contact-item {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.contact-item-icon {
+    background: var(--thirdBackgroundColor);
+    /* padding: 0.8rem 1rem; */
+    width: 53px;
+    height: 53px;
+    border-radius: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-item-icon svg {
+    fill: var(--primaryIconColor);
+}
+
+.contact-item-detail h4 {
+    margin-bottom: 0.6rem;
+}
+
+
+/* Footer Section */
+
+footer {
+    padding: 4rem 0;
+    background: var(--secondaryBackgroundColor);
+    text-align: center;
+}
+
+.footer-icons {
+    margin-bottom: 1rem;
+}
+
+.footer-icons a {
+    margin: 0 0.5rem;
+}
+
+.footer-icons svg {
+    fill: #3e3f40;
+}
+
+.footer-icons a:hover svg {
+    fill: #000;
+}
+
+
+/* PROFILE IMAGE */
+
+.profile-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.profile-img__ornament>.item {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    transition: all 0.25s linear;
+}
+
+
+/* ================================
+   RESPONSIVE
+   ================================ */
+
+@media (max-width: 600px) {
+    .popup-vertical-videos {
+        grid-template-columns: 1fr;
+    }
+}
+
+.popup-grid.grid-landscape .vimeo-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.popup-grid.grid-landscape iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+
+/* VIDEO LANDSCAPE DI CARD */
+
+.popup-grid.grid-landscape>.video-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.swiper-wrapper {
+    align-items: stretch;
+}
+
+.swiper-slide {
+    height: auto !important;
+}
+
+.card {
+    height: 100%;
+}
+
+.popup-grid.grid-landscape>.video-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #000;
+}
+
+
+/* ===============================
+   POPUP CONTENT SPACING GLOBAL
+================================ */
+
+.popup-box .popup-body>* {
+    margin-bottom: 24px;
+}
+
+.popup-box .popup-body>*:last-child {
+    margin-bottom: 0;
+}
+
+
+/* ===============================
+   VERTICAL VIDEO – 3 SEJAJAR
+================================ */
+
+.popup-vertical-videos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    /* max-width: 1000px;
+    margin: 0 auto; */
+}
+
+
+/* JIKA HANYA 1 VIDEO VERTIKAL → TENGAH */
+
+.popup-vertical-videos:has(.video-container:only-child) {
+    grid-template-columns: 1fr;
+    justify-items: center;
+}
+
+.popup-vertical-videos:has(.video-container:only-child) .video-container {
+    max-width: 420px;
+    /* optional, biar tidak kegedean */
+    width: 100%;
+}
+
+@media (max-width: 900px) {
+    .popup-vertical-videos {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .popup-vertical-videos {
+        grid-template-columns: 1fr;
+    }
+}
+
+.popup-vertical-videos .video-container {
+    width: 100%;
+    aspect-ratio: 9 / 16;
+    background: #000;
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+}
+
+
+/* iframe Vimeo */
+
+.popup-vertical-videos .video-container iframe {
+    width: 100% !important;
+    height: 100% !important;
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+}
+
+.popup-grid.grid-landscape>.video-container {
+    aspect-ratio: 16 / 9;
+}
+
+
+/* target DOM hasil inject Vimeo */
+
+.popup-vertical-videos .video-container>div {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
